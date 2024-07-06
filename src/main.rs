@@ -15,26 +15,26 @@ fn rotate_image(image: &DynamicImage, angle: f64) -> RgbaImage {
 
 fn main() {
     let input_path = Path::new("test.png");
-    let poop_image_path = Path::new("shit.png");
+    let shit_image_path = Path::new("shit.png");
     let output_path = Path::new("out.png");
 
     let mut rng = rand::thread_rng();
     let mut input_image = read_image(&input_path);
-    let poop_image = read_image(&poop_image_path);
+    let shit_image = read_image(&shit_image_path);
 
     let (width, height) = input_image.dimensions();
-    let num_poops = rng.gen_range(0..100);
+    let num_shits = rng.gen_range(0..100);
 
-    for _ in 0..num_poops {
+    for _ in 0..num_shits {
         let x = rng.gen_range(0..width) as i64;
         let y = rng.gen_range(0..height) as i64;
 
-        let resized_poop = poop_image.thumbnail(100, 100);
+        let resized_shit = shit_image.thumbnail(100, 100);
 
         let angle = rng.gen_range(0.0..360.0);
-        let rotated_poop = rotate_image(&resized_poop, angle);
+        let rotated_shit = rotate_image(&resized_shit, angle);
 
-        image::imageops::overlay(&mut input_image, &DynamicImage::ImageRgba8(rotated_poop), x, y);
+        image::imageops::overlay(&mut input_image, &DynamicImage::ImageRgba8(rotated_shit), x, y);
     }
 
     input_image.save(output_path).unwrap();
